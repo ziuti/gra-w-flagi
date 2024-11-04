@@ -23,17 +23,17 @@ function showNextCountry() {
     
     document.getElementById('flag').src = country.flags.png;
     document.getElementById('flag').alt = country.name.common;
+    document.getElementById('name').innerText = country.name.common;
     document.getElementById('answer').value = '';
-    document.getElementById('message').innerText = '';
     
-    document.getElementById('submit').onclick = () => checkAnswer(country.name.common);
+    document.getElementById('submit').onclick = () => checkAnswer(country.capital[0]);
 }
 
 function checkAnswer(correctAnswer) {
     const userAnswer = document.getElementById('answer').value.trim();
 
     if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
-        score++;
+        score++;    
         document.getElementById('message').innerText = 'Dobrze!';
     } else {
         errors++;
@@ -42,6 +42,7 @@ function checkAnswer(correctAnswer) {
     
     document.getElementById('score').innerText = score;
     document.getElementById('errors').innerText = errors;
+    
 
     startGame();
 }
